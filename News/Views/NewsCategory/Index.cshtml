@@ -1,0 +1,24 @@
+﻿@model IEnumerable<News.Models.NewsCategory>
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h2>Category</h2>
+
+<p>
+    <a asp-action="AddNewsCategory">Create New</a>
+</p>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a asp-action="GetNews" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a> |
+                <a asp-action="EditNewsCategory" asp-route-id="@item.Id">Edit</a> |            
+                @*<a asp-action="DeleteNewsCategory" asp-route-id="@item.Id">Delete</a>*@
+            </li>
+
+        }
+    </tbody>
+

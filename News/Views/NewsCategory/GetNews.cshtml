@@ -1,0 +1,48 @@
+﻿@model IEnumerable<News.Models.NewsModel>
+
+@{
+    ViewData["Title"] = "News";
+}
+
+<h2>News</h2>
+
+<p>
+    <a asp-action="AddNews" asp-controller="News">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewsTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <a asp-action="EditNews" asp-route-id="@item.Id" asp-controller="News">Edit</a> |
+                    <a asp-action="DetailsOfNews" asp-route-id="@item.Id" asp-controller="News">Details</a> |
+                    <a asp-action="DeleteNews" asp-route-id="@item.Id" asp-controller="News">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
